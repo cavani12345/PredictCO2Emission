@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/bootstrap4/css/bootstrap.min.css') }}">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+      <div class="col-3 col-sm-3">
+      </div>
+      <div class="col-6 col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            Fill The Following Field to predict Co2 emission of an Engine
+          </div>
+          <div class="card-body">
+            <form method="POST" action="{{url_for('predict')}}">
+              <div class="form-group">
+                <label for="enginesize">ENGINESIZE</label>
+                <input type="text" class="form-control" name="enginesize" id="enginesize" placeholder="engine size" onfocus="this.value=' '">
+              </div>
+              <div class="form-group">
+                <label for="cylinders">CYLINDERS</label>
+                <input type="text" class="form-control" id="cylinders" name="cylinders" placeholder="number of cylinder"onfocus="this.value=' '">
+              </div>
+              <div class="form-group">
+                <label for="fuelcons">FUELCONSUMPTION_COMB</label>
+                <input type="text" class="form-control" id="fuelcons" name="fuelcons" placeholder="fuel consumption"onfocus="this.value=' '">
+              </div>
+              <button type="submit" class="btn btn-primary">Predict</button>
+              <br>
+              <br>
+              {% if prediction :%}
+              <strong> Co2 Emission is {{prediction}}</strong>
+              {% endif %}
+            </form>
+        </div>
+      </div>
+      <div class="col-3 col-sm-3">
+      </div>
+    </div>
+</div>
+  
+</body>
+</html>
